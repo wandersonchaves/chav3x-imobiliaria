@@ -1,6 +1,6 @@
 import { PrismicRichText } from '@prismicio/react';
 
-export const TextSection = ({ slice }: any) => {
+export const TextSection = ({ slice }) => {
   const sectionClass = slice.slice_label
     ? `text-section-${slice.slice_label}`
     : 'text-section-1col';

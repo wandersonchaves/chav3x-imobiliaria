@@ -1,6 +1,6 @@
 import { PrismicRichText, PrismicText, PrismicLink } from '@prismicio/react'
 
-export const ImageHighlight = ({ slice }: any) => (
+export const ImageHighlight = ({ slice }) => (
   <section className="highlight content-section">
     <div className="highlight-left">
       <PrismicRichText field={slice.primary.title} />

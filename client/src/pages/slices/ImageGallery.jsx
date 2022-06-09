@@ -1,6 +1,6 @@
 import { PrismicRichText, PrismicText, PrismicLink } from '@prismicio/react';
 
-const GalleryItem = ({ item }: any) => {
+const GalleryItem = ({ item }) => {
   return (
     <div className="gallery-item">
       <img src={item.image.url} alt={item.image.alt} />
@@ -14,12 +14,12 @@ const GalleryItem = ({ item }: any) => {
   );
 };
 
-export const ImageGallery = ({ slice }: any) => {
+export const ImageGallery = ({ slice }) => {
   return (
     <section className="image-gallery content-section">
       <PrismicRichText field={slice.primary.gallery_title} />
       <div className="gallery">
-        {slice.items.map((item: any) => (
+        {slice.items.map((item) => (
           <GalleryItem key={item.image.url} item={item} />
         ))}
       </div>

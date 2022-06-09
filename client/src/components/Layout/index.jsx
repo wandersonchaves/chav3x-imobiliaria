@@ -1,7 +1,7 @@
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
-export const Layout = ({ wrapperClass, menuDoc, children }: any) => {
+export const Layout = ({ wrapperClass, menuDoc, children }) => {
   return (
     <div className={wrapperClass}>
       <Header menuDoc={menuDoc} />

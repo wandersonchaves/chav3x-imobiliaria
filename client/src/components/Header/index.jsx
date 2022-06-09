@@ -1,6 +1,6 @@
 import { PrismicText, PrismicLink } from '@prismicio/react';
 
-const MenuLink = ({ menuLink }: any) => {
+const MenuLink = ({ menuLink }) => {
   return (
     <li>
       <PrismicLink field={menuLink.link}>
@@ -10,7 +10,7 @@ const MenuLink = ({ menuLink }: any) => {
   );
 };
 
-export function Header({ menuDoc }: any) {
+export function Header({ menuDoc }) {
   if (menuDoc) {
     return (
       <header className="site-header">

@@ -2,7 +2,7 @@ import { PrismicText, PrismicLink } from '@prismicio/react';
 import { Link } from 'react-router-dom';
 import { Footer } from '../Footer';
 
-export const HomepageBanner = ({ banner }: any) => (
+export const HomepageBanner = ({ banner }) => (
   <section
     className="homepage-banner h-screen bg-no-repeat bg-cover"
     style={{
