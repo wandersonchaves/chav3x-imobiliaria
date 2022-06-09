@@ -1,0 +1,30 @@
+{
+  "name": "chav3x-fashion",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@prismicio/client": "^6.4.2",
+    "@prismicio/helpers": "^2.0.0-beta.6",
+    "@prismicio/react": "^2.0.0-beta.9",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^1.0.7",
+    "prettier": "^2.3.2",
+    "tailwindcss": "^3.0.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.0"
+  }
+}
