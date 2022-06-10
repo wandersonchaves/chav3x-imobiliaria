@@ -58,7 +58,7 @@ export function LookItem() {
   if (look && menu) {
     return (
       <>
-        {/* <Layout wrapperClassName="look" menuDoc={menu}> */}
+        <Layout wrapperClassName="look" menuDoc={menu}>
         {/* <SliceZone slices={look.data.look_content} components={components} /> */}
         <div className="bg-white max-h-full">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -124,7 +124,7 @@ export function LookItem() {
             </div>
           </div>
         </div>
-        {/* </Layout> */}
+        </Layout>
       </>
     );
   } else if (notFound) {
