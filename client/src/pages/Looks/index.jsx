@@ -41,7 +41,7 @@ export function Looks() {
   // console.log('menu', menu);
 
   // Return the look if a document was retrieved from Prismic
-  if (look && menu) {
+  if (look) {
     return (
       <Layout wrapperClass="look" menuDoc={menu}>
         {/* <SliceZone slices={look.data.look_content} components={components} /> */}
