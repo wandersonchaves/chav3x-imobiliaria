@@ -1,8 +1,8 @@
-# Ambiente de Desenvolvimento | Vite + React + Tailwind CSS
+# Ambiente de Desenvolvimento | React + Tailwind CSS
 
 ## Descrição
 
-Template inicial dos meus projetos em react com typescript e tailwindcss, utilizando o [Vite](https://vitejs.dev/).
+Template inicial dos meus projetos em react com tailwindcss, utilizando o [React](https://reactjs.org/).
 
 ## Começando
 
@@ -24,15 +24,14 @@ yarn
 - Execute o projeto:
 
 ```
-yarn dev
+yarn start
 
 ```
 
 ### Tecnologias e bibliotecas usadas no projeto
 
 ```
-- Vite
+- React
 - TailwindCSS
-- Typescript
 
 ```
