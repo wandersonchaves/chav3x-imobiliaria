@@ -4,10 +4,22 @@ import {
   useSinglePrismicDocument,
 } from '@prismicio/react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { NotFound } from '../../pages/NotFount';
 import { components } from '../../pages/slices';
 import { Layout } from '../Layout';
+
+import { ImWhatsapp, ImArrowLeft2, ImHome } from 'react-icons/im';
+import { QRCode } from '../QRCode';
+
+import { Fragment, useState } from 'react';
+import { Dialog, RadioGroup, Transition } from '@headlessui/react';
+import {
+  ArrowLeftIcon,
+  ArrowSmLeftIcon,
+  XIcon,
+} from '@heroicons/react/outline';
+import { StarIcon } from '@heroicons/react/solid';
 
 const products = [
   {
@@ -39,49 +51,81 @@ export function LookItem() {
     }
   }, []);
 
-  // console.log('look', look);
-  // console.log('menu', menu);
+  console.log('look', look);
+  console.log('menu', menu);
 
   // Return the look if a document was retrieved from Prismic
   if (look && menu) {
     return (
-      <Layout wrapperClass="look" menuDoc={menu}>
-        <SliceZone slices={look.data.look_content} components={components} />
-        {/* {console.log(look)} */}
-        <div className="bg-white">
+      <>
+        {/* <Layout wrapperClassName="look" menuDoc={menu}> */}
+        {/* <SliceZone slices={look.data.look_content} components={components} /> */}
+        <div className="bg-white max-h-full">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-              Customers also purchased
-            </h2>
+            <header className="flex justify-between">
+              <Link to="/looks">
+                <ImArrowLeft2 color="#000" />
+              </Link>
+              <Link to="/">
+                <ImHome color="#000" />
+              </Link>
+            </header>
 
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
               <div key={look.id} className="group relative">
-                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
                   <img
-                    src={look.imageSrc}
-                    alt={look.imageAlt}
-                    className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                    src={look.data.image_look.url}
+                    alt={look.data.image_look.alt}
+                    className="w-full object-center object-cover lg:w-full lg:h-full"
                   />
                 </div>
-                <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="text-sm text-gray-700">
-                      <a href={look.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {look.name}
-                      </a>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">{look.color}</p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-1 lg:grid-rows-3 xl:gap-x-8">
+                <div className="group relative">
+                  <div className="w-full h-full flex justify-center items-center min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
+                    <h1>
+                      Olha só, este look que você escolheu tem disponível na
+                      loja do Deck
+                    </h1>
                   </div>
-                  <p className="text-sm font-medium text-gray-900">
-                    {look.price}
-                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
+              <div key={look.id} className="group relative">
+                <div className="w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
+                  <img
+                    src={look.data.qr_code.url}
+                    alt={look.data.image_look.alt}
+                    className="w-full object-center object-cover lg:w-full lg:h-full"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-1 lg:grid-rows-3 xl:gap-x-8">
+                <div className="text-center w-full h-full flex justify-center items-center min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
+                  <h1>
+                    Você pode entrar em contato diretamente com eles via
+                    Whatsapp no QRCode ao lado
+                  </h1>
+                </div>
+
+                <div className="">
+                  <div className="w-full h-full flex justify-center items-end min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                      Button
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </Layout>
+        {/* </Layout> */}
+      </>
     );
   } else if (notFound) {
     return <NotFound />;

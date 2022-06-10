@@ -11,6 +11,7 @@ import { components } from '../slices';
 import { Layout } from '../../components/Layout';
 import { NotFound } from '../NotFount';
 import { LookItem } from '../../components/LookItem';
+import { ImArrowLeft2, ImHome } from 'react-icons/im';
 
 export function Looks() {
   // const { uid } = useParams();
@@ -33,7 +34,7 @@ export function Looks() {
     // clickedItem.preventDefault();
     setIdUnitItem(clickedItem);
 
-    console.log("idUnitItem", idUnitItem);
+    console.log('idUnitItem', idUnitItem);
   }
 
   console.log('look', look);
@@ -44,8 +45,16 @@ export function Looks() {
     return (
       <Layout wrapperClass="look" menuDoc={menu}>
         {/* <SliceZone slices={look.data.look_content} components={components} /> */}
-        <div className="bg-white">
+        <div className="bg-white h-screen">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+            <header className="flex justify-between">
+              <Link to="/">
+                <ImArrowLeft2 color="#000" />
+              </Link>
+              <Link to="/">
+                <ImHome color="#000" />
+              </Link>
+            </header>
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
               <div key={look[0].id} className="group relative">
                 <div className="w-full h-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
@@ -57,7 +66,7 @@ export function Looks() {
                 </div>
               </div>
 
-              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8">
+              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 overflow-y-auto h-screen">
                 {look.map((unitLook) => (
                   <div
                     key={unitLook.id}
@@ -79,19 +88,22 @@ export function Looks() {
                               aria-hidden="true"
                               className="absolute inset-0"
                             />
-                            {unitLook.uid}
                           </Link>
                         </h3>
-                        <p className="mt-1 text-sm text-gray-500">branco</p>
                       </div>
-                      <p className="text-sm font-medium text-gray-900">
-                        R$10.00
-                      </p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            <footer className="flex justify-end">
+              <button className=" flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                <Link to="/">
+                  <ImHome color="#000" />
+                </Link>
+                ESCOLHER ESTE LOOK
+              </button>
+            </footer>
           </div>
         </div>
         {/* <LookItem /> */}
