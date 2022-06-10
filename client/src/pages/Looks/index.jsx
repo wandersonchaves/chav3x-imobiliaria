@@ -5,10 +5,10 @@ import { useAllPrismicDocumentsByType } from '@prismicio/react';
 import { NotFound } from '../NotFount';
 import { ImArrowLeft2, ImHome } from 'react-icons/im';
 
-export async function Looks() {
+export function Looks() {
   const [idUnitItem, setIdUnitItem] = useState('');
 
-  const [look, lookState] = await useAllPrismicDocumentsByType('look');
+  const [look, lookState] = useAllPrismicDocumentsByType('look');
 
   const notFound = lookState.state === 'failed';
 
@@ -92,8 +92,6 @@ export async function Looks() {
         </div>
       </div>
     );
-  } else if (notFound) {
-    return <NotFound />;
   }
 
   return null;
