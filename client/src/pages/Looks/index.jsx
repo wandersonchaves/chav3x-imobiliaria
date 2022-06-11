@@ -77,7 +77,6 @@ export function Looks() {
             {/* TODO: organizar unitLook ao chegar para trazer os dados corretos na CONTEXTAPI */}
             <Link
               to="/"
-              onClick={selectedLook(unitLook.data.image_look.url)}
               className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
             >
               ESCOLHER ESTE LOOK
