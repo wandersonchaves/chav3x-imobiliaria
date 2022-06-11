@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAllPrismicDocumentsByType } from '@prismicio/react';
 
 import { NotFound } from '../NotFount';
 import { ImArrowLeft2, ImHome } from 'react-icons/im';
+import { LookContext } from '../../components/LookContext';
 
 export function Looks() {
-  const [idUnitItem, setIdUnitItem] = useState('');
+  const lookContext = useContext(LookContext);
+  const selectedLook = (chosenLook) => () => {
+    lookContext.chooseLook(chosenLook);
+  };
 
   const [look, lookState] = useAllPrismicDocumentsByType('look');
 
@@ -20,44 +24,34 @@ export function Looks() {
     }
   }, []);
 
-  function handleUnitLookId(clickedItem) {
-    // clickedItem.preventDefault();
-    setIdUnitItem(clickedItem);
-
-    console.log('idUnitItem', idUnitItem);
-  }
-
-  // Return the look if a document was retrieved from Prismic
   if (look) {
     return (
-      <div className="bg-white h-screen">
-        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <header className="flex justify-between">
-            <Link to="/">
-              <ImArrowLeft2 color="#000" />
+      <div className="bg-slate-100 max-h-screen">
+        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 h-screen">
+          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 h-full">
+            <Link className="justify-self-start" to="/">
+              <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+                <ImArrowLeft2 size={25} color="#fff" />
+              </div>
             </Link>
-            <Link to="/">
-              <ImHome color="#000" />
+            <Link className="justify-self-end" to="/">
+              <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+                <ImHome size={25} color="#fff" />
+              </div>
             </Link>
-          </header>
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
-            <div key={look[0].id} className="group relative">
-              <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
+            <div className="group relative">
+              <div className="w-full h-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
                 <img
-                  src={look[0].data.image_look.url}
+                  src={lookContext.chosenLook.undefined}
                   alt={look[0].data.image_look.alt}
                   className="w-full object-center object-cover lg:w-full lg:h-full"
                 />
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 overflow-y-auto h-80">
+            <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 overflow-y-scroll overflow-hidden h-full">
               {look.map((unitLook) => (
-                <div
-                  key={unitLook.id}
-                  onClick={handleUnitLookId}
-                  className="group relative"
-                >
+                <div key={unitLook.id} className="group relative">
                   <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
                     <img
                       src={unitLook.data.image_look.url}
@@ -68,27 +62,28 @@ export function Looks() {
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <Link to={unitLook.uid} onClick={handleUnitLookId}>
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                        </Link>
+                        <span
+                          onClick={selectedLook(unitLook.data.image_look.url)}
+                          aria-hidden="true"
+                          className="absolute inset-0"
+                        />
                       </h3>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-          <footer className="flex justify-end">
-            <button className=" flex bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-              <Link to="/">
-                <ImHome color="#000" />
-              </Link>
+            <br />
+            {/* TODO: organizar unitLook ao chegar para trazer os dados corretos na CONTEXTAPI */}
+            <Link
+              to="/"
+              onClick={selectedLook(unitLook.data.image_look.url)}
+              className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
+            >
               ESCOLHER ESTE LOOK
-            </button>
-          </footer>
+            </Link>
+          </div>
+          <footer className="flex justify-end"></footer>
         </div>
       </div>
     );

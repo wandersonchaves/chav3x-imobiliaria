@@ -1,7 +1,6 @@
-import { PrismicProvider, PrismicToolbar } from '@prismicio/react';
+import { PrismicProvider } from '@prismicio/react';
 import { Link } from 'react-router-dom';
-import { Looks } from './pages/Looks';
-import { client, repositoryName } from './prismic';
+import { client } from './prismic';
 import { Router } from './routes';
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
         )}
       >
         <Router />
-        {/* <PrismicToolbar repositoryName={repositoryName} /> */}
       </PrismicProvider>
     </div>
   );

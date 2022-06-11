@@ -1,4 +1,4 @@
-import { PrismicText, PrismicLink } from '@prismicio/react';
+import { PrismicText } from '@prismicio/react';
 import { Link } from 'react-router-dom';
 import { Footer } from '../Footer';
 

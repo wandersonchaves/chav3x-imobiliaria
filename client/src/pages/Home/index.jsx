@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
-import { SliceZone, useSinglePrismicDocument } from '@prismicio/react';
+import { useSinglePrismicDocument } from '@prismicio/react';
 
-import { components } from '../slices';
 import { Layout } from '../../components/Layout';
 import { HomepageBanner } from '../../components/HomepageBanner';
 import { NotFound } from '../NotFount';
 
 export const HomePage = () => {
   const [home, homeState] = useSinglePrismicDocument('homepage');
-  const [menu, menuState] = useSinglePrismicDocument('menu');
 
-  const notFound = homeState.state === 'failed' || menuState.state === 'failed';
+  const notFound = homeState.state === 'failed';
 
   useEffect(() => {
     if (homeState.state === 'failed') {
@@ -20,12 +18,10 @@ export const HomePage = () => {
     }
   }, [homeState.state]);
 
-  // Return the page if a document was retrieved from Prismic
-  if (home && menu) {
+  if (home) {
     return (
-      <Layout wrapperClass="homepage" menuDoc={menu}>
+      <Layout wrapperClass="homepage">
         <HomepageBanner banner={home.data.homepage_banner[0]} />
-        {/* <SliceZone slices={home.data.page_content} components={components} /> */}
       </Layout>
     );
   } else if (notFound) {

@@ -1,25 +1,14 @@
 import {
-  SliceZone,
   usePrismicDocumentByUID,
   useSinglePrismicDocument,
 } from '@prismicio/react';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { NotFound } from '../../pages/NotFount';
-import { components } from '../../pages/slices';
 import { Layout } from '../Layout';
 
-import { ImWhatsapp, ImArrowLeft2, ImHome } from 'react-icons/im';
-import { QRCode } from '../QRCode';
-
-import { Fragment, useState } from 'react';
-import { Dialog, RadioGroup, Transition } from '@headlessui/react';
-import {
-  ArrowLeftIcon,
-  ArrowSmLeftIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import { StarIcon } from '@heroicons/react/solid';
+import { ImArrowLeft2, ImHome } from 'react-icons/im';
+import { LookContext } from '../LookContext';
 
 const products = [
   {
@@ -36,6 +25,11 @@ const products = [
 ];
 
 export function LookItem() {
+  const lookContext = useContext(LookContext);
+  const finishLook = (chosenLook) => () => {
+    lookContext.chooseLook(chosenLook);
+  };
+
   const { uid } = useParams();
 
   const [look, lookState] = usePrismicDocumentByUID('look', uid);
@@ -66,6 +60,7 @@ export function LookItem() {
                 <Link to="/looks">
                   <ImArrowLeft2 color="#000" />
                 </Link>
+                <pre>{JSON.stringify(lookContext, null, 2)}</pre>
                 <Link to="/">
                   <ImHome color="#000" />
                 </Link>
@@ -117,8 +112,11 @@ export function LookItem() {
 
                   <div className="">
                     <div className="w-full h-full flex justify-center items-end min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
-                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                        Button
+                      <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                        onClick={finishLook(look)}
+                      >
+                        Finalize sua escolha
                       </button>
                     </div>
                   </div>
