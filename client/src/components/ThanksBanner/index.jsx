@@ -10,10 +10,10 @@ export const ThanksBanner = ({ banner }) => (
     }}
   >
     <div className="banner-content grid gap-4 grid-rows-3 py-4 full-width h-screen">
-      <h2 className="font-bold flex justify-center items-center text-white text-5xl">
+      <h2 className="font-bold flex justify-center items-center text-center text-white text-5xl"></h2>
+      <h1 className="font-bold flex justify-center items-center text-white text-5xl text-center">
         <PrismicText field={banner.title} />
-      </h2>
-      <h1 className="font-bold flex justify-center items-center text-white text-5xl"></h1>
+      </h1>
       <Link
         className="fixed bottom-10 right-10 z-10 font-sans text-lg bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"
         to="/"
