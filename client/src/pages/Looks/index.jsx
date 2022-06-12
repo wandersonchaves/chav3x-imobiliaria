@@ -5,12 +5,19 @@ import { useAllPrismicDocumentsByType } from '@prismicio/react';
 import { NotFound } from '../NotFount';
 import { ImArrowLeft2, ImHome } from 'react-icons/im';
 import { LookContext } from '../../components/LookContext';
+import { useState } from 'react';
 
 export function Looks() {
   const lookContext = useContext(LookContext);
   const selectedLook = (chosenLook) => () => {
     lookContext.chooseLook(chosenLook);
   };
+
+  // const itemSelected = Object.keys(lookContext.chosenLook).map((key) => {
+  //   const { lookSelected } = lookContext.chosenLook[key];
+
+  //   return lookSelected;
+  // });
 
   const [look, lookState] = useAllPrismicDocumentsByType('look');
 
@@ -23,6 +30,14 @@ export function Looks() {
       );
     }
   }, []);
+
+  // const teste = Object.keys(
+  //   lookContext.chosenLook((key) => {
+  //     return key;
+  //   }),
+  // );
+
+  // console.log(teste);
 
   if (look) {
     return (
@@ -40,6 +55,7 @@ export function Looks() {
               </div>
             </Link>
             <div className="group relative">
+              <pre>{JSON.stringify(selectedLook, null, 2)}</pre>
               <div className="w-full h-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
                 <img
                   src={lookContext.chosenLook.undefined}
@@ -76,7 +92,7 @@ export function Looks() {
             <br />
             {/* TODO: organizar unitLook ao chegar para trazer os dados corretos na CONTEXTAPI */}
             <Link
-              to="/"
+              to="/looks/look-1"
               className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
             >
               ESCOLHER ESTE LOOK
