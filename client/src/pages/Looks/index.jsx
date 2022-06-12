@@ -8,16 +8,31 @@ import { LookContext } from '../../components/LookContext';
 import { useState } from 'react';
 
 export function Looks() {
-  const lookContext = useContext(LookContext);
-  const selectedLook = (chosenLook) => () => {
-    lookContext.chooseLook(chosenLook);
+  const atualLook = useContext(LookContext);
+  // const selectedLook = (chosenLook) => () => {
+  //   atualLook.chosenLook(chosenLook);
+  // };
+
+  const itemSelected = (clickedLook) => () => {
+    atualLook.chosenLook(clickedLook);
   };
 
-  // const itemSelected = Object.keys(lookContext.chosenLook).map((key) => {
-  //   const { lookSelected } = lookContext.chosenLook[key];
+  // const lookSelected = Object.keys(atualLook.atualLook).reduce((prev, curr) => {
+  //   return atualLook.atualLook[curr];
+  // }, 0);
 
-  //   return lookSelected;
-  // });
+  let [lookSelected, setLookSelected] = useState({});
+  useEffect(() => {
+    setLookSelected(
+      Object.keys(atualLook.atualLook).reduce((prev, curr) => {
+        return atualLook.atualLook[curr];
+      }, 0),
+    );
+  }, [atualLook]);
+
+  console.log(lookSelected);
+
+  // const result = itemSelected.look;
 
   const [look, lookState] = useAllPrismicDocumentsByType('look');
 
@@ -32,40 +47,52 @@ export function Looks() {
   }, []);
 
   // const teste = Object.keys(
-  //   lookContext.chosenLook((key) => {
+  //   atualLook.chosenLook((key) => {
   //     return key;
   //   }),
   // );
 
-  // console.log(teste);
+  // const result = atualLook.chosenlook((key) => {
+  //   return key;
+  // });
 
   if (look) {
     return (
-      <div className="bg-slate-100 max-h-screen">
-        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 h-screen">
-          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 h-full">
-            <Link className="justify-self-start" to="/">
+      <div
+        className="flex justify-center items-center h-screen"
+        style={
+          {
+            // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${look[0].data.banner.url})`,
+          }
+        }
+      >
+        <div className="h-full w-full max-w-screen-md relative flex justify-center overflow-hidden rounded-xl">
+          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
+            <Link className="justify-self-start self-end" to="/">
               <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImArrowLeft2 size={25} color="#fff" />
               </div>
             </Link>
-            <Link className="justify-self-end" to="/">
+            <Link className="justify-self-end self-end" to="/">
               <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImHome size={25} color="#fff" />
               </div>
+              {/* <pre>{JSON.stringify(atualLook, null, 2)}</pre> */}
             </Link>
-            <div className="group relative">
-              <pre>{JSON.stringify(selectedLook, null, 2)}</pre>
-              <div className="w-full h-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
-                <img
-                  src={lookContext.chosenLook.undefined}
-                  alt={look[0].data.image_look.alt}
-                  className="w-full object-center object-cover lg:w-full lg:h-full"
-                />
-              </div>
+
+            <div className="w-full h-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
+              <img
+                // src={
+                //   lookSelected.length
+                //     ? lookSelected.data.image_look.url
+                //     : look[0].data.image_look.url
+                // }
+                alt={look[0].data.image_look.alt}
+                className="w-full object-center object-cover lg:w-full lg:h-full"
+              />
             </div>
 
-            <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 overflow-y-scroll overflow-hidden h-full">
+            <div className="bg-gray-300 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 rounded-md overflow-hidden h-full">
               {look.map((unitLook) => (
                 <div key={unitLook.id} className="group relative">
                   <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
@@ -79,7 +106,7 @@ export function Looks() {
                     <div>
                       <h3 className="text-sm text-gray-700">
                         <span
-                          onClick={selectedLook(unitLook.data.image_look.url)}
+                          onClick={itemSelected(unitLook)}
                           aria-hidden="true"
                           className="absolute inset-0"
                         />
@@ -93,6 +120,7 @@ export function Looks() {
             {/* TODO: organizar unitLook ao chegar para trazer os dados corretos na CONTEXTAPI */}
             <Link
               to="/looks/look-1"
+              // to={`/looks/${lookSelected.data.image_look.url}`}
               className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
             >
               ESCOLHER ESTE LOOK

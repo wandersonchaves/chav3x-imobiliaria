@@ -3,22 +3,22 @@ import React, { createContext, useEffect, useState } from 'react';
 export const LookContext = createContext();
 
 export const LookProvider = ({ children }) => {
-  const [chosenLook, setChosenLook] = useState({});
+  const [atualLook, setAtualLook] = useState({});
 
   useEffect(() => {
     const lookLocal = window.localStorage.getItem('look');
 
     if (lookLocal) {
-      setChosenLook(JSON.parse(lookLocal));
+      setAtualLook(JSON.parse(lookLocal));
     }
   }, []);
 
-  const chooseLook = (look) => {
-    setChosenLook(() => ({ [look.id]: look }));
+  const chosenLook = (look) => {
+    setAtualLook(() => ({ [look.id]: look }));
   };
 
   const finishLook = (look) => {
-    setChosenLook((old) => {
+    setAtualLook((old) => {
       let quantity = 0;
       if (old[look.id]) {
         quantity = old[look.id].quantity;
@@ -33,7 +33,7 @@ export const LookProvider = ({ children }) => {
   };
 
   return (
-    <LookContext.Provider value={{ chosenLook, chooseLook, finishLook }}>
+    <LookContext.Provider value={{ atualLook, chosenLook, finishLook }}>
       {children}
     </LookContext.Provider>
   );
