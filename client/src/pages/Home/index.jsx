@@ -4,6 +4,7 @@ import { useSinglePrismicDocument } from '@prismicio/react';
 import { Layout } from '../../components/Layout';
 import { HomepageBanner } from '../../components/HomepageBanner';
 import { NotFound } from '../NotFount';
+import { Loading } from '../../components/Loading';
 
 export function HomePage() {
   const [home, homeState] = useSinglePrismicDocument('homepage');
@@ -28,7 +29,7 @@ export function HomePage() {
       </Layout>
     );
   } else if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   } else if (notFound) {
     return <NotFound />;
   }

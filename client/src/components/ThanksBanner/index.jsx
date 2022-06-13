@@ -12,6 +12,7 @@ export function ThanksBanner({ banner }) {
     <div className="container">
       <div className="bg-indigo-500 video-wrapper">
         <video
+          className="w-screen"
           onClick={togglePlay}
           autoPlay
           loop
@@ -19,7 +20,10 @@ export function ThanksBanner({ banner }) {
           src={banner.video.url}
         />
       </div>
-      <Link to="/" className="controls">
+      <Link
+        to="/"
+        className="mb-96 text-slate-200 bg-indigo-500 hover:bg-indigo-700 controls"
+      >
         HOME
       </Link>
     </div>

@@ -42,13 +42,13 @@ export function Looks() {
   if (look) {
     return (
       <div
-        className="flex justify-center h-screen"
+        className="bg-cover bg-center h-screen"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${look[0].data.banner.url})`,
         }}
       >
-        <div className="max-w-screen-2xl relative flex justify-center overflow-hidden rounded-xl m-5">
-          <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
+        <div className="max-w-screen-2xl relative flex items-center justify-center overflow-hidden rounded-xl">
+          <div className="h-screen grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
             <Link className="justify-self-start self-end" to="/">
               <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImArrowLeft2 size={25} color="#fff" />
@@ -72,7 +72,7 @@ export function Looks() {
                     ? lookSelected[0].look.data.image_look.alt
                     : lookSelected[0].data.image_look.alt
                 }
-                className="w-full object-center object-cover lg:w-full lg:h-full"
+                className="lg:w-full lg:h-full"
               />
             </div>
 
@@ -107,7 +107,7 @@ export function Looks() {
                   ? lookSelected[0].look.uid
                   : lookSelected[0].uid
               }`}
-              className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
+              className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
             >
               ESCOLHER ESTE LOOK
             </Link>

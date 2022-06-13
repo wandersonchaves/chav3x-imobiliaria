@@ -10,8 +10,9 @@ export function HomepageBanner({ banner }) {
 
   return (
     <div className="container">
-      <div className="bg-indigo-500 video-wrapper">
+      <div className=" video-wrapper">
         <video
+          className="w-screen"
           onClick={togglePlay}
           autoPlay
           loop
@@ -19,7 +20,10 @@ export function HomepageBanner({ banner }) {
           src={banner.video.url}
         />
       </div>
-      <Link to="/looks" className="controls">
+      <Link
+        to="/looks"
+        className="mb-96 text-slate-200 bg-indigo-500 hover:bg-indigo-700 controls"
+      >
         ESCOLHA SEU LOOK
       </Link>
     </div>

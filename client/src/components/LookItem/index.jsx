@@ -38,11 +38,15 @@ export function LookItem() {
         <div className="bg-white max-h-full">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
             <header className="flex justify-between">
-              <Link to="/looks">
-                <ImArrowLeft2 color="#000" />
+              <Link className="justify-self-start self-end" to="/looks">
+                <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+                  <ImArrowLeft2 size={25} color="#fff" />
+                </div>
               </Link>
-              <Link to="/">
-                <ImHome color="#000" />
+              <Link className="justify-self-end self-end" to="/">
+                <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+                  <ImHome size={25} color="#fff" />
+                </div>
               </Link>
             </header>
 
@@ -94,7 +98,7 @@ export function LookItem() {
                   <div className="w-full h-full flex justify-center items-end min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
                     <Link
                       to="/thanks"
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                      className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
                       onClick={finishLook(look)}
                     >
                       Finalize sua escolha
