@@ -1,19 +1,24 @@
 import { PrismicText } from '@prismicio/react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Footer } from '../Footer';
+import { useVideoPlayer } from '../VideoPlayer';
 
 import './styles.css';
 
 export function HomepageBanner({ banner }) {
+  const videoElement = useRef(null);
+  const { togglePlay } = useVideoPlayer(videoElement);
+
   return (
     <div className="container">
-      <div className="video-wrapper">
+      <div className="bg-indigo-500 video-wrapper">
         <video
+          onClick={togglePlay}
           autoPlay
           loop
+          ref={videoElement}
           src={banner.video.url}
-          // ref={videoElement}
-          // onTimeUpdate={handleOnTimeUpdate}
         />
       </div>
       <Link to="/looks" className="controls">

@@ -5,16 +5,19 @@ import { Layout } from '../../components/Layout';
 import { HomepageBanner } from '../../components/HomepageBanner';
 import { NotFound } from '../NotFount';
 
-export const HomePage = () => {
+export function HomePage() {
   const [home, homeState] = useSinglePrismicDocument('homepage');
 
   const notFound = homeState.state === 'failed';
+  const loading = homeState.state === 'loading';
 
   useEffect(() => {
     if (homeState.state === 'failed') {
       console.warn(
         'Homepage document was not found. Make sure it exists in your Prismic repository.',
       );
+    } else if (homeState.state === 'loading') {
+      console.warn('Loading...');
     }
   }, [homeState.state]);
 
@@ -24,9 +27,11 @@ export const HomePage = () => {
         <HomepageBanner banner={home.data.homepage_banner[0]} />
       </Layout>
     );
+  } else if (loading) {
+    return <p>Loading...</p>;
   } else if (notFound) {
     return <NotFound />;
   }
 
   return null;
-};
+}
