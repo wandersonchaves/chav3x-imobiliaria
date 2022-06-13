@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
 export const Footer = () => (
   <footer className="fixed bottom-3 left-3 text-gray-600">
@@ -8,13 +8,6 @@ export const Footer = () => (
         CHAV3X
       </Link>
       <br />
-      {/* <a href="https://prismic.io" target="_blank" rel="noopener noreferrer">
-        <img
-          className="footer-logo"
-          src="/images/logo-prismic.svg"
-          alt="Gray Prismic logo"
-        />
-      </a> */}
     </p>
   </footer>
 );

@@ -16,6 +16,7 @@ video {
 .video-wrapper {
   width: 100%;
   max-width: 700px;
+  min-width: max-content;
   position: relative;
   display: flex;
   justify-content: center;

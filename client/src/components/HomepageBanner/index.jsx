@@ -1,7 +1,5 @@
-import { PrismicText } from '@prismicio/react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Footer } from '../Footer';
 import { useVideoPlayer } from '../VideoPlayer';
 
 import './styles.css';

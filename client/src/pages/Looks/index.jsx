@@ -47,7 +47,7 @@ export function Looks() {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${look[0].data.banner.url})`,
         }}
       >
-        <div className="max-w-screen-md relative flex justify-center overflow-hidden rounded-xl">
+        <div className="max-w-screen-2xl relative flex justify-center overflow-hidden rounded-xl m-5">
           <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
             <Link className="justify-self-start self-end" to="/">
               <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
@@ -76,7 +76,7 @@ export function Looks() {
               />
             </div>
 
-            <div className="bg-gray-300 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 rounded-md overflow-hidden h-full">
+            <div className="bg-gray-300 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 rounded-md overflow-y-auto h-full">
               {look.map((unitLook) => (
                 <div key={unitLook.id} className="group relative">
                   <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
