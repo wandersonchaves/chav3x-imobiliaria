@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export function useVideoPlayer(videoElement) {
   const [playerState, setPlayerState] = useState({
-    isPlaying: true,
+    isPlaying: false,
   });
 
   const togglePlay = () => {
@@ -13,9 +13,7 @@ export function useVideoPlayer(videoElement) {
   };
 
   useEffect(() => {
-    playerState.isPlaying
-      ? videoElement.current.play()
-      : videoElement.current.pause();
+    playerState.isPlaying && videoElement.current.play();
   }, [playerState.isPlaying, videoElement]);
 
   return {

@@ -37,6 +37,8 @@ export function Looks() {
     );
   }, [atualLook]);
 
+  console.log(lookSelected);
+
   if (look) {
     return (
       <div
@@ -60,8 +62,16 @@ export function Looks() {
 
             <div className="w-full h-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
               <img
-                src={lookSelected[0].data.image_look.url}
-                alt={lookSelected[0].data.image_look.alt}
+                src={
+                  lookSelected[0].look
+                    ? lookSelected[0].look.data.image_look.url
+                    : lookSelected[0].data.image_look.url
+                }
+                alt={
+                  lookSelected[0].look
+                    ? lookSelected[0].look.data.image_look.alt
+                    : lookSelected[0].data.image_look.alt
+                }
                 className="w-full object-center object-cover lg:w-full lg:h-full"
               />
             </div>
@@ -92,7 +102,11 @@ export function Looks() {
             </div>
             <br />
             <Link
-              to={`/looks/${lookSelected[0].uid}`}
+              to={`/looks/${
+                lookSelected[0].look
+                  ? lookSelected[0].look.uid
+                  : lookSelected[0].uid
+              }`}
               className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
             >
               ESCOLHER ESTE LOOK
