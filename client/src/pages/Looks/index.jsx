@@ -107,7 +107,7 @@ export function Looks() {
               to={`/looks/${
                 lookSelected.uid ? lookSelected.uid : lookSelected[0].uid
               }`}
-              className="flex items-center justify-center h-14 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+              className="flex items-center justify-center h-28 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
             >
               ESCOLHER ESTE LOOK
             </Link>
