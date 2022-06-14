@@ -23,7 +23,7 @@ export function ThanksBanner({ banner }) {
       </div>
       <Link
         to="/"
-        className="absolute bottom-4 p-10 right-1/4 mbottom rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+        className="absolute bottom-0 p-8 mbottomThanks rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
       >
         <ImHome size={100} color="#fff" />
       </Link>

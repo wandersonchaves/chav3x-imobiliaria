@@ -48,6 +48,7 @@ video {
   transition: all 0.3s ease-in-out;
 }
 
-.mbottom {
-  margin-bottom: 10%;
+.mbottomThanks {
+  margin-bottom: 50px;
+  right: 15%;
 }
