@@ -107,7 +107,7 @@ export function SaveLooks() {
                   ? lookSelected[0].look.uid
                   : lookSelected[0].uid
               }`}
-              className="flex items-center justify-center h-28 mb-4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
+              className="flex items-center justify-center h-4 mb-4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
             >
               ESCOLHER ESTE LOOK
             </Link>

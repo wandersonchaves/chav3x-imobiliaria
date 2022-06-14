@@ -25,6 +25,7 @@ export function HomepageBanner({ banner }) {
         className="absolute bottom-0 p-8 mbottomhome rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
         to="/looks"
       >
+        CLIQUE AQUI
         <ImArrowRight2 size={25} color="#fff" />
       </Link>
     </div>
