@@ -34,7 +34,7 @@ export function LookItem() {
   if (look) {
     return (
       <div className="h-screen w-screen">
-        <Link
+        {/* <Link
           className="absolute p-8 mbuttomBack rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
           to="/looks"
         >
@@ -45,7 +45,7 @@ export function LookItem() {
           to="/"
         >
           <ImHome size={50} color="#fff" />
-        </Link>
+        </Link> */}
         <div className="h-screen w-screen">
           <video
             className="h-screen w-screen"
