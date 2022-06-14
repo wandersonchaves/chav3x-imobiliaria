@@ -47,3 +47,7 @@ video {
   transform: translateY(150%);
   transition: all 0.3s ease-in-out;
 }
+
+.mbottom {
+  margin-bottom: 10%;
+}

@@ -23,3 +23,7 @@ video {
   overflow: hidden;
   border-radius: 10px;
 }
+
+.mbottom {
+  margin-bottom: 10%;
+}
