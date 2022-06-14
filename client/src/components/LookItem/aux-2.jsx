@@ -7,7 +7,7 @@ import { useVideoPlayer } from '../VideoPlayer';
 
 import './styles.css';
 
-export function LookItem() {
+export function Aux2() {
   const lookContext = useContext(LookContext);
   const finishLook = (chosenLook) => () => {
     lookContext.finishLook(chosenLook);
@@ -32,10 +32,10 @@ export function LookItem() {
 
   if (look) {
     return (
-      <div className="h-screen w-screen">
-        <div className="h-screen w-screen">
+      <div className="container">
+        <div className="bg-indigo-500 video-wrapper">
           <video
-            className="h-screen w-screen"
+            className="w-screen"
             onClick={togglePlay}
             autoPlay
             loop
@@ -45,7 +45,7 @@ export function LookItem() {
         </div>
         <Link
           to="/thanks"
-          className="absolute bottom-4 p-10 right-1/4 mb-96 rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+          className="mb-96 text-slate-200 bg-indigo-500 hover:bg-indigo-700 controls"
           onClick={finishLook(look)}
         >
           FINALIZAR ESCOLHA

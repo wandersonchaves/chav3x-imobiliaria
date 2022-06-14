@@ -6,7 +6,7 @@ import { NotFound } from '../NotFount';
 import { ImArrowLeft2, ImHome } from 'react-icons/im';
 import { LookContext } from '../../components/LookContext';
 
-export function Looks() {
+export function SaveLooks() {
   const [look, lookState] = useAllPrismicDocumentsByType('look');
   const [lookSelected, setLookSelected] = useState({});
 
@@ -30,34 +30,32 @@ export function Looks() {
   };
 
   useEffect(() => {
-    if (atualLook.atualLook.uid) {
-      setLookSelected(atualLook.atualLook);
-    } else {
-      setLookSelected(
-        Object.keys(atualLook.atualLook).map((key) => {
-          return atualLook.atualLook[key];
-        }),
-      );
-    }
+    setLookSelected(
+      Object.keys(atualLook.atualLook).map((key) => {
+        return atualLook.atualLook[key];
+      }),
+    );
   }, [atualLook]);
+
+  console.log(lookSelected);
 
   if (look) {
     return (
       <div
-        className="bg-cover bg-center h-screen"
+        className="bg-cover bg-center h-screen "
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${look[0].data.background.url})`,
         }}
       >
-        <div className="max-w-screen-2xl relative flex items-center justify-center overflow-hidden rounded-xl">
-          <div className="h-screen grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
+        <div className="h-screen w-screen relative flex items-center justify-center overflow-hidden rounded-2xl">
+          <div className="h-screen w-screen grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
             <Link className="justify-self-start self-end" to="/">
-              <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+              <div className="flex items-center justify-center h-28 w-28 mt-28 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImArrowLeft2 size={25} color="#fff" />
               </div>
             </Link>
             <Link className="justify-self-end self-end" to="/">
-              <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+              <div className="flex items-center justify-center h-28 w-28 mt-28 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImHome size={25} color="#fff" />
               </div>
             </Link>
@@ -65,13 +63,13 @@ export function Looks() {
             <div className="w-full h-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
               <img
                 src={
-                  lookSelected.uid
-                    ? lookSelected.data.image_look.url
+                  lookSelected[0].look
+                    ? lookSelected[0].look.data.image_look.url
                     : lookSelected[0].data.image_look.url
                 }
                 alt={
-                  lookSelected.uid
-                    ? lookSelected.data.image_look.alt
+                  lookSelected[0].look
+                    ? lookSelected[0].look.data.image_look.alt
                     : lookSelected[0].data.image_look.alt
                 }
                 className="lg:w-full lg:h-full"
@@ -105,9 +103,11 @@ export function Looks() {
             <br />
             <Link
               to={`/looks/${
-                lookSelected.uid ? lookSelected.uid : lookSelected[0].uid
+                lookSelected[0].look
+                  ? lookSelected[0].look.uid
+                  : lookSelected[0].uid
               }`}
-              className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+              className="flex items-center justify-center h-28 mb-28 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
             >
               ESCOLHER ESTE LOOK
             </Link>

@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { ImArrowRight2 } from 'react-icons/im';
 import { Link } from 'react-router-dom';
 import { useVideoPlayer } from '../VideoPlayer';
 
@@ -9,10 +10,10 @@ export function HomepageBanner({ banner }) {
   const { togglePlay } = useVideoPlayer(videoElement);
 
   return (
-    <div className="container">
-      <div className=" video-wrapper">
+    <div className="h-screen w-screen">
+      <div className="h-screen w-screen">
         <video
-          className="w-screen"
+          className="h-screen w-screen"
           onClick={togglePlay}
           autoPlay
           loop
@@ -21,10 +22,10 @@ export function HomepageBanner({ banner }) {
         />
       </div>
       <Link
+        className="absolute bottom-4 p-8 right-1/4 mb-96 rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
         to="/looks"
-        className="mb-96 text-slate-200 bg-indigo-500 hover:bg-indigo-700 controls"
       >
-        ESCOLHA SEU LOOK
+        <ImArrowRight2 size={100} color="#fff" />
       </Link>
     </div>
   );
