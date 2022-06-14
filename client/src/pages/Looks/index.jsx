@@ -52,12 +52,12 @@ export function Looks() {
         <div className="max-w-screen-2xl relative flex items-center justify-center overflow-hidden rounded-xl">
           <div className="h-screen grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
             <Link className="justify-self-start self-end" to="/">
-              <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+              <div className="flex items-center justify-center h-14 w-h-14 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImArrowLeft2 size={25} color="#fff" />
               </div>
             </Link>
             <Link className="justify-self-end self-end" to="/">
-              <div className="flex items-center justify-center h-16 w-16 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+              <div className="flex items-center justify-center h-14 w-h-14 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImHome size={25} color="#fff" />
               </div>
             </Link>
@@ -107,7 +107,7 @@ export function Looks() {
               to={`/looks/${
                 lookSelected.uid ? lookSelected.uid : lookSelected[0].uid
               }`}
-              className="flex items-center justify-center h-16 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+              className="flex items-center justify-center h-14 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
             >
               ESCOLHER ESTE LOOK
             </Link>
