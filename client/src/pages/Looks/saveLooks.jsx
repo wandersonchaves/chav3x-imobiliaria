@@ -50,12 +50,12 @@ export function SaveLooks() {
         <div className="h-screen w-screen relative flex items-center justify-center overflow-hidden rounded-2xl">
           <div className="h-screen w-screen grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
             <Link className="justify-self-start self-end" to="/">
-              <div className="flex items-center justify-center h-28 w-28 mt-28 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+              <div className="flex items-center justify-center h-28 w-28 mt-4 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImArrowLeft2 size={25} color="#fff" />
               </div>
             </Link>
             <Link className="justify-self-end self-end" to="/">
-              <div className="flex items-center justify-center h-28 w-28 mt-28 bg-indigo-500 hover:bg-indigo-700 rounded-full">
+              <div className="flex items-center justify-center h-28 w-28 mt-4 bg-indigo-500 hover:bg-indigo-700 rounded-full">
                 <ImHome size={25} color="#fff" />
               </div>
             </Link>
@@ -107,7 +107,7 @@ export function SaveLooks() {
                   ? lookSelected[0].look.uid
                   : lookSelected[0].uid
               }`}
-              className="flex items-center justify-center h-28 mb-28 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
+              className="flex items-center justify-center h-28 mb-4 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full"
             >
               ESCOLHER ESTE LOOK
             </Link>
