@@ -1,5 +1,6 @@
 import { usePrismicDocumentByUID } from '@prismicio/react';
 import { useContext, useEffect, useRef } from 'react';
+import { ImArrowLeft2, ImHome } from 'react-icons/im';
 import { Link, useParams } from 'react-router-dom';
 import { NotFound } from '../../pages/NotFount';
 import { LookContext } from '../LookContext';
@@ -33,10 +34,16 @@ export function LookItem() {
   if (look) {
     return (
       <div className="h-screen w-screen">
-        <Link className="justify-self-start self-end absolute bottom-0 p-8 mbottomItem rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700" to="/looks">
+        <Link
+          className="justify-self-start self-end absolute bottom-0 p-8 mbottomItem rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+          to="/looks"
+        >
           <ImArrowLeft2 size={50} color="#fff" />
         </Link>
-        <Link className="justify-self-end self-end absolute bottom-0 p-8 mbottomItem rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700" to="/">
+        <Link
+          className="justify-self-end self-end absolute bottom-0 p-8 mbottomItem rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+          to="/"
+        >
           <ImHome size={50} color="#fff" />
         </Link>
         <div className="h-screen w-screen">
