@@ -26,7 +26,7 @@ export function HomepageBanner({ banner }) {
         to="/looks"
       >
         CLIQUE AQUI
-        <ImArrowRight2 size={25} color="#fff" />
+        {/* <ImArrowRight2 size={25} color="#fff" /> */}
       </Link>
     </div>
   );
