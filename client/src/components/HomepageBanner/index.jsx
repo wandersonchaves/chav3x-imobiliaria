@@ -22,10 +22,10 @@ export function HomepageBanner({ banner }) {
         />
       </div>
       <Link
-        className="absolute bottom-4 p-8 right-1/4 mbottom rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+        className="absolute bottom-0 p-8 right-1/4 mbottom rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
         to="/looks"
       >
-        <ImArrowRight2 size={100} color="#fff" />
+        <ImArrowRight2 size={25} color="#fff" />
       </Link>
     </div>
   );
