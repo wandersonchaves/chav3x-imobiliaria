@@ -10,9 +10,6 @@ import './styles.css';
 export function LookItem() {
   const navigate = useNavigate();
   const lookContext = useContext(LookContext);
-  const finishLook = (chosenLook) => () => {
-    lookContext.finishLook(chosenLook);
-  };
 
   const { uid } = useParams();
 
@@ -84,9 +81,8 @@ export function LookItem() {
         <Link
           to="/thanks"
           className="absolute bottom-0 p-8 mButtonFinish rounded-full font-bold text-slate-200 bg-indigo-500 hover:bg-indigo-700"
-          onClick={finishLook(look)}
         >
-          FINALIZAR ESCOLHA
+          FINALIZAR
         </Link>
       </div>
     );

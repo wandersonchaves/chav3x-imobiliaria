@@ -49,14 +49,14 @@ export function SaveLooks() {
       return;
     }
 
-    return setInterval(() => {
+    setInterval(() => {
       setTimeLoopToHome((prevCount) => prevCount + 1);
     }, 1000);
   };
 
   useEffect(() => {
     setInterval(() => {
-      return handleTimeLoopToHome();
+      handleTimeLoopToHome();
     }, 10000);
   }, []);
 
