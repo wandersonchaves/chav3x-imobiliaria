@@ -9,7 +9,7 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/looks/" element={<SaveLooks />} />
+        <Route path="/looks" element={<SaveLooks />} />
         <Route path="/looks/:uid" element={<LookItem />} />
         <Route path="/thanks" element={<Thanks />} />
       </Routes>

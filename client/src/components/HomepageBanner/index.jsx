@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { ImArrowRight2 } from 'react-icons/im';
 import { Link } from 'react-router-dom';
+import { Footer } from '../Footer';
 import { useVideoPlayer } from '../VideoPlayer';
 
 import './styles.css';
@@ -22,12 +22,12 @@ export function HomepageBanner({ banner }) {
         />
       </div>
       <Link
-        className="absolute bottom-0 p-8 mbottomhome rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+        className="absolute bottom-0 p-8 mButtonToLooks rounded-full font-bold text-slate-200 bg-indigo-500 hover:bg-indigo-700"
         to="/looks"
       >
         CLIQUE AQUI
-        {/* <ImArrowRight2 size={25} color="#fff" /> */}
       </Link>
+      <Footer />
     </div>
   );
 }
