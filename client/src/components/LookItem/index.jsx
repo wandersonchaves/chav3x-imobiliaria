@@ -1,11 +1,11 @@
-import { usePrismicDocumentByUID } from '@prismicio/react';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { NotFound } from '../../pages/NotFount';
-import { LookContext } from '../LookContext';
-import { useVideoPlayer } from '../VideoPlayer';
+import { usePrismicDocumentByUID } from "@prismicio/react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { NotFound } from "../../pages/NotFount";
+import { LookContext } from "../LookContext";
+import { useVideoPlayer } from "../VideoPlayer";
 
-import './styles.css';
+import "./styles.css";
 
 export function LookItem() {
   const navigate = useNavigate();
@@ -13,48 +13,20 @@ export function LookItem() {
 
   const { uid } = useParams();
 
-  const [look, lookState] = usePrismicDocumentByUID('look', uid);
+  const [look, lookState] = usePrismicDocumentByUID("look", uid);
 
-  const notFound = lookState.state === 'failed';
+  const notFound = lookState.state === "failed";
 
   useEffect(() => {
-    if (lookState.state === 'failed') {
+    if (lookState.state === "failed") {
       console.warn(
-        'Look document was not found. Make sure it exists in your Prismic repository',
+        "Look document was not found. Make sure it exists in your Prismic repository"
       );
     }
   }, []);
 
   const videoElement = useRef(null);
   const { togglePlay } = useVideoPlayer(videoElement);
-
-  const [timeLoopToHome, setTimeLoopToHome] = useState(0);
-
-  const handleTimeLoopToHome = () => {
-    if (timeLoopToHome) {
-      clearInterval(timeLoopToHome);
-      setTimeLoopToHome(0);
-      return;
-    }
-
-    return setInterval(() => {
-      setTimeLoopToHome((prevCount) => prevCount + 1);
-    }, 1000);
-  };
-
-  useEffect(() => {
-    setInterval(() => {
-      return handleTimeLoopToHome();
-    }, 10000);
-  }, []);
-
-  if (timeLoopToHome >= 60) {
-    return navigate('/looks');
-  }
-
-  function changeRoute() {
-    navigate('/looks');
-  }
 
   if (look) {
     return (
