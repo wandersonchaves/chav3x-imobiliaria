@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useSinglePrismicDocument } from '@prismicio/react';
 
-import { Layout } from '../../components/Layout';
 import { HomepageBanner } from '../../components/HomepageBanner';
 import { NotFound } from '../NotFount';
 import { Loading } from '../../components/Loading';
@@ -23,11 +22,7 @@ export function HomePage() {
   }, [homeState.state]);
 
   if (home) {
-    return (
-      <Layout wrapperClass="homepage">
-        <HomepageBanner banner={home.data.homepage_banner[0]} />
-      </Layout>
-    );
+    return <HomepageBanner banner={home.data.homepage_banner[0]} />;
   } else if (loading) {
     return <Loading />;
   } else if (notFound) {
