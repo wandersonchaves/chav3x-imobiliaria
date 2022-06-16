@@ -1,8 +1,13 @@
 export function Loading() {
   return (
-    <button type="button" className="bg-indigo-500 ..." disabled>
-      <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
-      Processing...
-    </button>
+    <div className="flex items-center justify-center h-screen w-screen">
+      <button
+        type="button"
+        className="w-1/2 bg-indigo-500 font-bold p-10 rounded-full"
+        disabled
+      >
+        Processing...
+      </button>
+    </div>
   );
 }
