@@ -1,28 +1,35 @@
+<<<<<<< HEAD
 import { usePrismicDocumentByUID } from '@prismicio/react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { NotFound } from '../../pages/NotFount';
 import { LookContext } from '../LookContext';
 import { useVideoPlayer } from '../VideoPlayer';
+=======
+import { usePrismicDocumentByUID } from "@prismicio/react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { NotFound } from "../../pages/NotFount";
+import { LookContext } from "../LookContext";
+import { useVideoPlayer } from "../VideoPlayer";
+>>>>>>> 7030293dce75992a5820675d9e6e9532b87c6a29
 
-import './styles.css';
+import "./styles.css";
 
 export function LookItem() {
+  const navigate = useNavigate();
   const lookContext = useContext(LookContext);
-  const finishLook = (chosenLook) => () => {
-    lookContext.finishLook(chosenLook);
-  };
 
   const { uid } = useParams();
 
-  const [look, lookState] = usePrismicDocumentByUID('look', uid);
+  const [look, lookState] = usePrismicDocumentByUID("look", uid);
 
-  const notFound = lookState.state === 'failed';
+  const notFound = lookState.state === "failed";
 
   useEffect(() => {
-    if (lookState.state === 'failed') {
+    if (lookState.state === "failed") {
       console.warn(
-        'Look document was not found. Make sure it exists in your Prismic repository',
+        "Look document was not found. Make sure it exists in your Prismic repository"
       );
     }
   }, []);
@@ -36,7 +43,11 @@ export function LookItem() {
         {/* <Link
           to="/looks"
           className="absolute p-8 mButtonBackToLooks rounded-full font-bold text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+<<<<<<< HEAD
          onClick={changeRoute}
+=======
+          onClick={changeRoute}
+>>>>>>> 7030293dce75992a5820675d9e6e9532b87c6a29
         >
           VOLTAR
         </Link> */}
@@ -51,12 +62,12 @@ export function LookItem() {
             src={look.data.video_look.url}
           />
         </div>
+
         <Link
           to="/thanks"
-          className="absolute bottom-0 p-8 mbottomItem rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
-          onClick={finishLook(look)}
+          className="absolute bottom-0 p-8 mButtonFinish rounded-full font-bold text-slate-200 bg-indigo-500 hover:bg-indigo-700"
         >
-          FINALIZAR ESCOLHA
+          FINALIZAR
         </Link>
       </div>
     );
