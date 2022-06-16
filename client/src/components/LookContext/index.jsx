@@ -4,7 +4,6 @@ export const LookContext = createContext();
 
 export const LookProvider = ({ children }) => {
   const [atualLook, setAtualLook] = useState({});
-  const [lookToBanner] = useState({});
 
   useEffect(() => {
     const lookLocal = window.localStorage.getItem('look');
@@ -15,7 +14,7 @@ export const LookProvider = ({ children }) => {
   }, []);
 
   const chosenLook = (look) => {
-    setAtualLook(() => ({ look }));
+    setAtualLook(() => ({ [look.id]: look }));
   };
 
   const finishLook = (look) => {
@@ -34,9 +33,7 @@ export const LookProvider = ({ children }) => {
   };
 
   return (
-    <LookContext.Provider
-      value={{ atualLook, lookToBanner, chosenLook, finishLook }}
-    >
+    <LookContext.Provider value={{ atualLook, chosenLook, finishLook }}>
       {children}
     </LookContext.Provider>
   );
