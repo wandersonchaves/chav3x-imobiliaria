@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useSinglePrismicDocument } from '@prismicio/react';
 
-import { Layout } from '../../components/Layout';
 import { NotFound } from '../NotFount';
 import { ThanksBanner } from '../../components/ThanksBanner';
 
@@ -20,9 +19,7 @@ export const Thanks = () => {
 
   if (thanks) {
     return (
-      <Layout wrapperClass="thanks">
-        <ThanksBanner banner={thanks.data.thanks_banner[0]} />
-      </Layout>
+      <ThanksBanner banner={thanks.data.thanks_banner[0]} />
     );
   } else if (notFound) {
     return <NotFound />;

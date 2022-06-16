@@ -1,7 +1,6 @@
 import { usePrismicDocumentByUID } from '@prismicio/react';
-import { useContext, useEffect, useRef } from 'react';
-import { ImArrowLeft2, ImHome } from 'react-icons/im';
-import { Link, useParams } from 'react-router-dom';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { NotFound } from '../../pages/NotFount';
 import { LookContext } from '../LookContext';
 import { useVideoPlayer } from '../VideoPlayer';
@@ -35,17 +34,13 @@ export function LookItem() {
     return (
       <div className="h-screen w-screen">
         {/* <Link
-          className="absolute p-8 mbuttomBack rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
           to="/looks"
+          className="absolute p-8 mButtonBackToLooks rounded-full font-bold text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+         onClick={changeRoute}
         >
-          <ImArrowLeft2 size={50} color="#fff" />
-        </Link>
-        <Link
-          className="absolute p-8 mbuttomHome rounded-full text-slate-200 bg-indigo-500 hover:bg-indigo-700"
-          to="/"
-        >
-          <ImHome size={50} color="#fff" />
+          VOLTAR
         </Link> */}
+
         <div className="h-screen w-screen">
           <video
             className="h-screen w-screen"

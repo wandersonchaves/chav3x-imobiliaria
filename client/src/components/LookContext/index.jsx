@@ -14,6 +14,7 @@ export const LookProvider = ({ children }) => {
   }, []);
 
   const chosenLook = (look) => {
+    console.log('LOOK', look);
     setAtualLook(() => ({ [look.id]: look }));
   };
 
