@@ -1,11 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAllPrismicDocumentsByType } from '@prismicio/react';
 
 import { NotFound } from '../NotFount';
-import { ImArrowLeft2, ImHome } from 'react-icons/im';
+import { ImArrowLeft2 } from 'react-icons/im';
 import { Loading } from '../../components/Loading';
 import { useLook } from '../../components/LookContext';
+
+import './styles.css';
 
 export function Looks() {
   const atualLook = useLook();
@@ -29,28 +31,45 @@ export function Looks() {
     }
   }, [lookState.state]);
 
+  console.log(atualLook.atualLook);
+
   if (look) {
     return (
       <div
-        className="h-screen w-screen"
+        className=""
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${atualLook.atualLook.data.background.url})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${
+            atualLook.atualLook.uid
+              ? atualLook.atualLook.data.background.url
+              : look[0].data.background.url
+          })`,
         }}
       >
-        <div className="h-screen w-screen relative flex items-center justify-center overflow-hidden rounded-xl">
-          <div className="h-screen grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
+        <div className="">
+          <div className="h-screen p-8 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
             <Link
-              className="absolute z-10 p-8 mButtonToHome rounded-full font-bold text-slate-200 bg-indigo-500 hover:bg-indigo-700"
+              className="absolute z-10 p-8 mButtonBackToHome rounded-full text-slate-200 bg-orange-500 hover:bg-orange-700"
               to="/"
             >
               <ImArrowLeft2 size={25} color="#fff" />
             </Link>
-            {/* <br /> */}
+            <br />
+            <div className="flex items-center justify-center h-10 -mb-8 py-2 px-4 bg-orange-500 text-white font-bold rounded">
+              ESCOLHA SEU LOOK
+            </div>
 
             <div className="w-full h-full bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
               <img
-                src={atualLook.atualLook.data.image_look.url}
-                alt={atualLook.atualLook.data.image_look.alt}
+                src={
+                  atualLook.atualLook.uid
+                    ? atualLook.atualLook.data.image_look.url
+                    : look[0].data.image_look.url
+                }
+                alt={
+                  atualLook.atualLook.uid
+                    ? atualLook.atualLook.data.image_look.alt
+                    : look[0].data.image_look.alt
+                }
                 className="lg:w-full lg:h-full"
               />
             </div>
@@ -81,8 +100,10 @@ export function Looks() {
             </div>
             <br />
             <Link
-              to={`/looks/${atualLook.atualLook.uid}`}
-              className="flex items-center justify-center h-28 bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+              to={`/looks/${
+                atualLook.atualLook.uid ? atualLook.atualLook.uid : look[0].uid
+              }`}
+              className="flex items-center justify-center h-16 -mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
             >
               ESCOLHER ESTE LOOK
             </Link>
