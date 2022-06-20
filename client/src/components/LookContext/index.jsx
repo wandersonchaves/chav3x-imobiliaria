@@ -1,41 +1,21 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 export const LookContext = createContext();
 
-export const LookProvider = ({ children }) => {
+export function LookProvider({ children }) {
   const [atualLook, setAtualLook] = useState({});
 
-  useEffect(() => {
-    const lookLocal = window.localStorage.getItem('look');
-
-    if (lookLocal) {
-      setAtualLook(JSON.parse(lookLocal));
-    }
-  }, []);
-
   const chosenLook = (look) => {
-    console.log('LOOK', look);
-    setAtualLook(() => ({ [look.id]: look }));
-  };
-
-  const finishLook = (look) => {
-    setAtualLook((old) => {
-      let quantity = 0;
-      if (old[look.id]) {
-        quantity = old[look.id].quantity;
-      }
-      const newLook = {
-        ...old,
-        [look.id]: { quantity: quantity + 1, look },
-      };
-      window.localStorage.setItem('look', JSON.stringify(newLook));
-      return newLook;
-    });
+    setAtualLook(look);
   };
 
   return (
-    <LookContext.Provider value={{ atualLook, chosenLook, finishLook }}>
+    <LookContext.Provider value={{ atualLook, chosenLook }}>
       {children}
     </LookContext.Provider>
   );
+}
+
+export const useLook = () => {
+  return useContext(LookContext);
 };

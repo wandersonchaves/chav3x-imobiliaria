@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LookItem } from './components/LookItem';
+import { LookPage } from './pages/LookPage';
 import { HomePage } from './pages/Home';
-import { SaveLooks } from './pages/Looks/saveLooks';
+import { Looks } from './pages/Looks';
 import { Thanks } from './pages/Thanks';
 
 export function Router() {
@@ -9,8 +9,8 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/looks/" element={<SaveLooks />} />
-        <Route path="/looks/:uid" element={<LookItem />} />
+        <Route path="/looks" element={<Looks />} />
+        <Route path="/looks/:uid" element={<LookPage />} />
         <Route path="/thanks" element={<Thanks />} />
       </Routes>
     </BrowserRouter>
