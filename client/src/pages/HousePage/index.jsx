@@ -7,33 +7,33 @@ import { useVideoPlayer } from '../../components/VideoPlayer';
 import './styles.css';
 import { Loading } from '../../components/Loading';
 
-export function LookPage() {
+export function HousePage() {
   const { uid } = useParams();
 
-  const [look, lookState] = usePrismicDocumentByUID('look', uid);
+  const [house, houseState] = usePrismicDocumentByUID('houses', uid);
 
-  const notFound = lookState.state === 'failed';
-  const loading = lookState.state === 'loading';
+  const notFound = houseState.state === 'failed';
+  const loading = houseState.state === 'loading';
 
   useEffect(() => {
-    if (lookState.state === 'failed') {
+    if (houseState.state === 'failed') {
       console.warn(
         'Homepage document was not found. Make sure it exists in your Prismic repository.',
       );
-    } else if (lookState.state === 'loading') {
+    } else if (houseState.state === 'loading') {
       console.warn('Loading...');
     }
-  }, [lookState.state]);
+  }, [houseState.state]);
 
   const videoElement = useRef(null);
   const { togglePlay } = useVideoPlayer(videoElement);
 
-  if (look) {
+  if (house) {
     return (
       <div className="h-screen w-screen">
         {/* <Link
-          to="/looks"
-          className="absolute p-8 mButtonBackToLooks rounded-full font-bold text-slate-200 bg-orange-500 hover:bg-orange-700"
+          to="/houses"
+          className="absolute p-8 mButtonBackToHouses rounded-full font-bold text-slate-200 bg-orange-500 hover:bg-orange-700"
         >
           <ImArrowLeft2 size={25} color="#fff" />
         </Link> */}
@@ -45,12 +45,12 @@ export function LookPage() {
             autoPlay
             loop
             ref={videoElement}
-            src={look.data.video_look.url}
+            src={house.data.video.url}
           />
         </div>
 
         <Link
-          to="/thanks"
+          to="/congrats"
           className="absolute bottom-0 p-8 mButtonFinish rounded-full font-bold text-slate-200 bg-orange-500 hover:bg-orange-700"
         >
           FINALIZAR

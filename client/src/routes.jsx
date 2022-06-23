@@ -1,17 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { LookPage } from './pages/LookPage';
+import { HousePage } from './pages/HousePage';
 import { HomePage } from './pages/Home';
-import { Looks } from './pages/Looks';
-import { Thanks } from './pages/Thanks';
+import { Houses } from './pages/Houses';
+import { Congrats } from './pages/Congrats';
 
 export function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/looks" element={<Looks />} />
-        <Route path="/looks/:uid" element={<LookPage />} />
-        <Route path="/thanks" element={<Thanks />} />
+        <Route path="/houses" element={<Houses />} />
+        <Route path="/houses/:uid" element={<HousePage />} />
+        <Route path="/congrats" element={<Congrats />} />
       </Routes>
     </BrowserRouter>
   );

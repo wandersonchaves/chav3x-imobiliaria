@@ -11,7 +11,7 @@ Template inicial dos meus projetos em react com tailwindcss, utilizando o [React
 ```
 " "
 
-cd chav3x-fashion
+cd chav3x-imobiliaria
 ```
 
 - Instale todas as dependencias:

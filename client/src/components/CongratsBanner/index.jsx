@@ -5,7 +5,7 @@ import { useVideoPlayer } from '../VideoPlayer';
 
 import './styles.css';
 
-export function ThanksBanner({ banner }) {
+export function CongratsBanner({ banner }) {
   const videoElement = useRef(null);
   const { togglePlay } = useVideoPlayer(videoElement);
 

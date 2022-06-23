@@ -1,6 +1,6 @@
 import * as prismic from '@prismicio/client';
 
-export const repositoryName = 'chav3x-fashion';
+export const repositoryName = 'chav3x-imobiliaria';
 
 export const client = prismic.createClient(repositoryName, {
   accessToken: '',
@@ -11,7 +11,7 @@ export const client = prismic.createClient(repositoryName, {
       path: '/',
     },
     {
-      type: 'page',
+      type: 'houses',
       path: '/:uid',
     },
   ],

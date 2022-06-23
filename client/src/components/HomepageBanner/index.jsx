@@ -22,8 +22,8 @@ export function HomepageBanner({ banner }) {
         />
       </div>
       <Link
-        className="absolute bottom-0 p-8 mButtonToLooks rounded-full font-bold text-white bg-orange-500 hover:bg-orange-700"
-        to="/looks"
+        className="absolute bottom-0 p-8 mButtonToHouses rounded-full font-bold text-white bg-orange-500 hover:bg-orange-700"
+        to="/houses"
       >
         CLIQUE AQUI
       </Link>

@@ -11,6 +11,8 @@ export function HomePage() {
   const notFound = homeState.state === 'failed';
   const loading = homeState.state === 'loading';
 
+  console.log('home', home);
+
   useEffect(() => {
     if (homeState.state === 'failed') {
       console.warn(
