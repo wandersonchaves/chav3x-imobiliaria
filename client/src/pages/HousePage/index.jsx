@@ -33,7 +33,7 @@ export function HousePage() {
       <div className="h-screen w-screen">
         {/* <Link
           to="/houses"
-          className="absolute p-8 mButtonBackToHouses rounded-full font-bold text-slate-200 bg-orange-500 hover:bg-orange-700"
+          className="absolute p-8 mButtonBackToHouses rounded-full font-bold text-slate-200 bg-lime-500 hover:bg-lime-600"
         >
           <ImArrowLeft2 size={25} color="#fff" />
         </Link> */}
@@ -51,7 +51,7 @@ export function HousePage() {
 
         <Link
           to="/congrats"
-          className="absolute bottom-0 p-8 mButtonFinish rounded-full font-bold text-slate-200 bg-orange-500 hover:bg-orange-700"
+          className="absolute bottom-0 p-8 mButtonFinish rounded-full font-bold text-slate-200 bg-lime-500 hover:bg-lime-600"
         >
           FINALIZAR
         </Link>

@@ -31,27 +31,27 @@ export function Houses() {
   }, [houseState.state]);
 
   if (house) {
+    const firstHouse = house.find((item) => {
+      return item.uid === 'house01';
+    });
+
     return (
       <div
         className=""
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${
-            atualHouse.atualHouse.uid
-              ? atualHouse.atualHouse.data.background.url
-              : house[0].data.background.url
-          })`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${firstHouse.data.background.url})`,
         }}
       >
         <div className="">
           <div className="h-screen p-8 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
             <Link
-              className="absolute z-10 p-8 mButtonBackToHome rounded-full text-slate-200 bg-orange-500 hover:bg-orange-700"
+              className="absolute z-10 p-8 mButtonBackToHome rounded-full text-slate-200 bg-lime-500 hover:bg-lime-600"
               to="/"
             >
               <ImArrowLeft2 size={25} color="#fff" />
             </Link>
             <br />
-            <div className="flex items-center justify-center h-10 -mb-8 py-2 px-4 bg-orange-500 text-white font-bold rounded">
+            <div className="flex items-center justify-center h-10 -mb-8 py-2 px-4 bg-lime-500 text-white font-bold rounded">
               ESCOLHA SUA CASA
             </div>
 
@@ -102,7 +102,7 @@ export function Houses() {
                   ? atualHouse.atualHouse.uid
                   : house[0].uid
               }`}
-              className="flex items-center justify-center h-16 -mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+              className="flex items-center justify-center h-16 -mt-4 bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded"
             >
               ESCOLHER ESTA CASA
             </Link>
