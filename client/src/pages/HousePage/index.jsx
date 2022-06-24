@@ -1,5 +1,6 @@
 import { usePrismicDocumentByUID } from '@prismicio/react';
 import { useEffect, useRef } from 'react';
+import { ImArrowLeft2 } from 'react-icons/im';
 import { Link, useParams } from 'react-router-dom';
 import { NotFound } from '../NotFount';
 import { useVideoPlayer } from '../../components/VideoPlayer';
@@ -31,12 +32,12 @@ export function HousePage() {
   if (house) {
     return (
       <div className="h-screen w-screen">
-        {/* <Link
+        <Link
           to="/houses"
-          className="absolute p-8 mButtonBackToHouses rounded-full font-bold text-slate-200 bg-lime-500 hover:bg-lime-600"
+          className="absolute z-10 p-8 mButtonBackToHouses rounded-full font-bold text-slate-200 bg-lime-500 hover:bg-lime-600"
         >
           <ImArrowLeft2 size={25} color="#fff" />
-        </Link> */}
+        </Link>
 
         <div className="h-screen w-screen">
           <video
