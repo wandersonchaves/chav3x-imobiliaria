@@ -1,7 +1,7 @@
 import { usePrismicDocumentByUID } from '@prismicio/react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ImArrowLeft2 } from 'react-icons/im';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { NotFound } from '../NotFount';
 import { useVideoPlayer } from '../../components/VideoPlayer';
 
@@ -28,6 +28,31 @@ export function HousePage() {
 
   const videoElement = useRef(null);
   const { togglePlay } = useVideoPlayer(videoElement);
+
+  const navigate = useNavigate();
+  const [timeLoopToHome, setTimeLoopToHome] = useState(0);
+
+  function handleTimeLoopToHome() {
+    if (timeLoopToHome) {
+      clearInterval(timeLoopToHome);
+      setTimeLoopToHome(0);
+    }
+
+    setInterval(() => {
+      setTimeLoopToHome((prevCount) => prevCount + 1);
+    }, 1000);
+  }
+
+  // Executa o timer pela primeira vez automaticamente
+  useEffect(() => {
+    setInterval(() => {
+      handleTimeLoopToHome();
+    }, 10000);
+  }, []);
+
+  if (house && timeLoopToHome >= 100) {
+    return navigate('/houses');
+  }
 
   if (house) {
     return (

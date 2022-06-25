@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAllPrismicDocumentsByType } from '@prismicio/react';
 
 import { NotFound } from '../NotFount';
@@ -30,6 +30,31 @@ export function Houses() {
     }
   }, [houseState.state]);
 
+  const navigate = useNavigate();
+  const [timeLoopToHome, setTimeLoopToHome] = useState(0);
+
+  function handleTimeLoopToHome() {
+    if (timeLoopToHome) {
+      clearInterval(timeLoopToHome);
+      setTimeLoopToHome(0);
+    }
+
+    setInterval(() => {
+      setTimeLoopToHome((prevCount) => prevCount + 1);
+    }, 1000);
+  }
+
+  // Executa o timer pela primeira vez automaticamente
+  useEffect(() => {
+    setInterval(() => {
+      handleTimeLoopToHome();
+    }, 10000);
+  }, []);
+
+  if (house && timeLoopToHome >= 100) {
+    return navigate('/');
+  }
+
   if (house) {
     const firstHouse = house.find((item) => {
       return item.uid === 'house01';
@@ -37,6 +62,7 @@ export function Houses() {
 
     return (
       <div
+        onClick={handleTimeLoopToHome}
         className=""
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${firstHouse.data.background.url})`,
