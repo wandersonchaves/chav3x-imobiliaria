@@ -71,13 +71,13 @@ export function Houses() {
         <div className="">
           <div className="h-screen p-8 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 w-full">
             <Link
-              className="absolute z-10 p-8 mButtonBackToHome rounded-full text-slate-200 bg-lime-500 hover:bg-lime-600"
+              className="absolute z-10 p-8 mButtonBackToHome rounded-full bg-lime-500 hover:bg-lime-600"
               to="/"
             >
-              <ImArrowLeft2 size={25} color="#fff" />
+              <ImArrowLeft2 size={25} color="#000" />
             </Link>
             <br />
-            <div className="flex items-center justify-center h-10 -mb-8 py-2 px-4 bg-lime-500 text-white font-bold rounded">
+            <div className="flex items-center justify-center h-10 -mb-8 py-2 px-4 bg-lime-500 text-black font-bold rounded-t-lg">
               ESCOLHA SUA CASA
             </div>
 
@@ -97,7 +97,7 @@ export function Houses() {
               />
             </div>
 
-            <div className="bg-gray-300 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 rounded-md overflow-y-auto h-full">
+            <div className="bg-gray-300 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 overflow-y-auto h-full">
               {house.map((unitHouse) => (
                 <div key={unitHouse.id} className="group relative">
                   <div className="w-full h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75  lg:aspect-none">
@@ -128,7 +128,7 @@ export function Houses() {
                   ? atualHouse.atualHouse.uid
                   : house[0].uid
               }`}
-              className="flex items-center justify-center h-16 -mt-4 bg-lime-500 hover:bg-lime-600 text-white font-bold py-2 px-4 rounded"
+              className="flex items-center justify-center h-16 -mt-4 bg-lime-500 hover:bg-lime-600 text-black font-bold py-2 px-4 rounded-b-lg"
             >
               ESCOLHER ESTA CASA
             </Link>

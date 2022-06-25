@@ -23,9 +23,9 @@ export function CongratsBanner({ banner }) {
       </div>
       <Link
         to="/"
-        className="absolute bottom-0 p-8 mButtonToHome rounded-full text-white bg-lime-500 hover:bg-lime-600"
+        className="absolute bottom-0 p-8 mButtonToHome rounded-full text-black bg-lime-500 hover:bg-lime-600"
       >
-        <ImHome size={50} color="#fff" />
+        <ImHome size={50} color="#000" />
       </Link>
     </div>
   );
