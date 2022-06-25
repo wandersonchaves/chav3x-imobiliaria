@@ -77,7 +77,7 @@ export function Houses() {
               <ImArrowLeft2 size={25} color="#000" />
             </Link>
             <br />
-            <div className="flex items-center justify-center h-10 -mb-8 py-2 px-4 bg-lime-500 text-black font-black rounded-t-lg">
+            <div className="flex items-center justify-center h-10 -mb-8 py-2 px-4 bg-black-500 text-lime-500 font-bold text-3xl rounded-t-lg">
               ESCOLHA SUA CASA
             </div>
 
@@ -128,7 +128,7 @@ export function Houses() {
                   ? atualHouse.atualHouse.uid
                   : house[0].uid
               }`}
-              className="flex items-center justify-center h-16 -mt-4 bg-lime-500 hover:bg-lime-600 text-black font-black py-2 px-4 rounded-b-lg"
+              className="flex items-center justify-center h-16 -mt-4 bg-lime-500 hover:bg-lime-600 text-black font-bold text-xl py-2 px-4 rounded-b-lg"
             >
               ESCOLHER ESTA CASA
             </Link>

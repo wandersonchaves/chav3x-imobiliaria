@@ -22,7 +22,7 @@ export function HomepageBanner({ banner }) {
         />
       </div>
       <Link
-        className="absolute bottom-0 p-8 mButtonToHouses rounded-full font-black text-black bg-lime-500 hover:bg-lime-600"
+        className="absolute bottom-0 p-8 mButtonToHouses rounded-full font-bold text-2xl text-black bg-lime-500 hover:bg-lime-600"
         to="/houses"
       >
         CLIQUE AQUI

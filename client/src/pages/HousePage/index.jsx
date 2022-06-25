@@ -77,7 +77,7 @@ export function HousePage() {
 
         <Link
           to="/congrats"
-          className="absolute bottom-0 p-8 w-72 flex justify-center mButtonFinish rounded-full font-black text-black bg-lime-500 hover:bg-lime-600"
+          className="absolute bottom-0 p-6 w-72 flex justify-center mButtonFinish rounded-full font-bold text-3xl text-black bg-lime-500 hover:bg-lime-600"
         >
           FINALIZAR
         </Link>
